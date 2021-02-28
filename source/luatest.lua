@@ -21,15 +21,18 @@ end
 -- tests the functions above
 local lines = lines_from("enwik8")
 
--- Add line numbers, a tab, and line contents
-local outfilestrarray = {}
-
 local startime = 0
 local endtime = 0
 
+-- Add line numbers, a tab, and line contents
+local function add_line_number(k, v)
+  return string.format('%6d',k) .. '\t' .. v .. '\n'
+end
+
+local outfilestrarray = {}
 starttime = os.clock()
 for k,v in pairs(lines) do
-  table.insert(outfilestrarray, string.format('%6d',k) .. '\t' .. v .. '\n')
+  table.insert(outfilestrarray, add_line_number(k, v))
 end
 endtime = os.clock()
 print(endtime-starttime)
