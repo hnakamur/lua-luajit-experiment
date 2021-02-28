@@ -37,10 +37,16 @@ starttime = os.clock()
 local hmac = require("resty.hmac")
 local key = '01234567890123456789012345678901'
 local hmac_sha256 = hmac:new(key, hmac.ALGOS.SHA256)
+local update_time = 0
 for k,v in pairs(lines) do
+  local t1 = os.clock()
   hmac_sha256:update(v)
+  update_time = update_time + (os.clock() - t1)
 end
+local t1 = os.clock()
 local mac = hmac_sha256:final()
 endtime = os.clock()
 print(endtime-starttime)
+print(update_time)
+print(endtime - t1)
 print(tohex(mac))

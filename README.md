@@ -36,54 +36,72 @@ make && make bench3 && make hmacbench3
 $ docker run -it lua-luajit-experiment
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-1.129897
+1.138071
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.956587
+1.965353
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.932217
+1.953905
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-1.120067
+1.12392
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.952922
+2.021549
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.928047
+1.947351
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-1.104449
+1.097556
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.954787
+1.847773
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.973834
+1.964875
 make --no-print-directory hmacbench
 (cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.206334
+0.772736
+0.45227499999993
+8.9999999999257e-06
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.100351
+0.640726
+0.37034000000005
+1.8999999999991e-05
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; ../source/hmacfile)
-0.107553
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-make --no-print-directory hmacbench
-(cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.195983
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-(cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.099981
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-(cd build/testdata; ../source/hmacfile)
-0.116287
+0.589808
+0.299843
+0.000002
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 make --no-print-directory hmacbench
 (cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.197352
+0.773899
+0.45179199999993
+2.0000000000131e-05
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.100934
+0.637756
+0.36871900000001
+2.0000000000131e-05
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; ../source/hmacfile)
-0.112103
+0.591092
+0.301906
+0.000002
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+make --no-print-directory hmacbench
+(cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
+0.784865
+0.45877699999999
+9.9999999998435e-06
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+(cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
+0.639199
+0.369241
+1.9000000000213e-05
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+(cd build/testdata; ../source/hmacfile)
+0.586282
+0.298885
+0.000002
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 ```
 
@@ -93,53 +111,71 @@ d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 $ make bench3 && make hmacbench3
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-0.985692
+0.987902
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.430252
+1.435097
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.639986
+1.618909
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-0.987721
+0.987279
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.397894
+1.41616
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.658995
+1.620571
 make --no-print-directory bench
 (cd build/testdata; ../lua542/bin/lua ../../source/luatest.lua)
-0.977287
+0.990797
 (cd build/testdata; ../luajit/bin/luajit ../../source/luatest.lua)
-1.436434
+1.406477
 (cd build/testdata; ../lua515/bin/lua ../../source/luatest.lua)
-1.641427
+1.635905
 make --no-print-directory hmacbench
 (cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.198082
+0.624088
+0.37589099999998
+9.0000000001478e-06
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.095498
+0.487047
+0.29322499999997
+1.8000000000074e-05
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; ../source/hmacfile)
-0.114331
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-make --no-print-directory hmacbench
-(cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.196659
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-(cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.097443
-d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
-(cd build/testdata; ../source/hmacfile)
-0.109628
+0.451323
+0.229724
+0.000003
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 make --no-print-directory hmacbench
 (cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
-0.204724
+0.627256
+0.38104900000001
+8.9999999999257e-06
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
-0.096396
+0.484585
+0.29105299999998
+1.9999999999909e-05
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 (cd build/testdata; ../source/hmacfile)
-0.117184
+0.456126
+0.230794
+0.000004
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+make --no-print-directory hmacbench
+(cd build/testdata; env 'LUA_CPATH=../lua542/lib/lua/?.so;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
+0.654882
+0.39434900000003
+8.000000000008e-06
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+(cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
+0.487735
+0.29320900000001
+1.8999999999991e-05
+d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
+(cd build/testdata; ../source/hmacfile)
+0.454578
+0.231385
+0.000002
 d6b1f3fe4ebd7b82c2ee416e280e6faff523df774b151a52a86f1722a6e1d3dc
 ```

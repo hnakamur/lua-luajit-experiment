@@ -34,21 +34,27 @@ int main(int argc, char **argv)
     return 1;
   }
   char *line;
+  double update_time = 0.0;
   while ((line = fgets(buf, BUF_SIZE, file)) != NULL) {
     char *eol = strchr(line, '\n');
     size_t line_len = eol ? eol - line : strlen(line);
+    double t1 = os_clock();
     if (!HMAC_Update(ctx, line, line_len)) {
       fprintf(stderr, "HMAC_Update error\n");
       return 1;
     }
+    update_time += os_clock() - t1;
   }
   unsigned int mac_len;
+  double t1 = os_clock();
   if (!HMAC_Final(ctx, buf, &mac_len)) {
     fprintf(stderr, "HMAC_Final error\n");
     return 1;
   }
   double endtime = os_clock();
   printf("%f\n", endtime - starttime);
+  printf("%f\n", update_time);
+  printf("%f\n", endtime - t1);
   for (int i = 0; i < mac_len; i++) {
     printf("%02x", (unsigned char)(buf[i]));
   }
