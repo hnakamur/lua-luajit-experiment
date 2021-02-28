@@ -7,7 +7,7 @@ all: build
 build: build/Makefile
 	cmake --build build
 
-build/Makefile: CMakeLists.txt
+build/Makefile: CMakeLists.txt source/CMakeLists.txt
 	cmake -v -S . -B build
 
 bench3:
@@ -28,6 +28,7 @@ hmacbench3:
 hmacbench:
 	(cd build/testdata; ../lua542/bin/lua ../../source/lua-hmacfiletest.lua)
 	(cd build/testdata; env 'LUA_PATH=../luajit/lib/?.lua;;' LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libssl.so.1.1 ../luajit/bin/luajit ../../source/luajit-hmacfiletest.lua)
+	(cd build/testdata; ../source/hmacfile)
 
 clean:
 	@cmake -E remove_directory build

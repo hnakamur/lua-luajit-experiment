@@ -64,3 +64,5 @@ ExternalProject_Add(luajithmac
   COMMAND           echo return {} > <INSTALL_DIR>/lib/resty/string.lua
 )
 ExternalProject_Add_StepDependencies(luajithmac build luajit)
+
+add_subdirectory(source)
