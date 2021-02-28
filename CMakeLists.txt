@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(lua_luajit_experiment LANGUAGES C VERSION 0.1)
 
-#set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_VERBOSE_MAKEFILE on)
 #set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(ExternalProject)
@@ -36,6 +36,7 @@ ExternalProject_Add(lua515
 set(testdataInstallDir ${CMAKE_CURRENT_BINARY_DIR}/testdata)
 ExternalProject_Add(testdata
   URL                 https://cs.fit.edu/~mmahoney/compression/enwik8.bz2
+  URL_HASH            SHA256=278ff6e2f7575f1cc79e8ab98cdc8db1a7cfa43247a3a007b0fb28d31f5b4d24
   DOWNLOAD_NO_EXTRACT true
   CONFIGURE_COMMAND   ""
   BUILD_COMMAND       ""
@@ -49,7 +50,7 @@ ExternalProject_Add(lua542openssl
   INSTALL_DIR       ${lua542InstallDir}
   CONFIGURE_COMMAND ""
   BUILD_IN_SOURCE   true
-  BUILD_COMMAND     make PREFIX=<INSTALL_DIR>
+  BUILD_COMMAND     make TARGET_FLAGS=-O2 PREFIX=<INSTALL_DIR>
   INSTALL_COMMAND   make install PREFIX=<INSTALL_DIR>
 )
 ExternalProject_Add_StepDependencies(lua542openssl build lua542)
