@@ -42,3 +42,25 @@ ExternalProject_Add(testdata
   INSTALL_COMMAND     ${CMAKE_COMMAND} -E make_directory ${testdataInstallDir}
   COMMAND             bzip2 -cd <SOURCE_DIR>/../enwik8.bz2 > ${testdataInstallDir}/enwik8
 )
+
+ExternalProject_Add(lua542openssl
+  GIT_REPOSITORY    https://github.com/zhaozg/lua-openssl
+  GIT_TAG           bcbad2d59435c741a1d92bb92b6d89a276719c15
+  INSTALL_DIR       ${lua542InstallDir}
+  CONFIGURE_COMMAND ""
+  BUILD_IN_SOURCE   true
+  BUILD_COMMAND     make PREFIX=<INSTALL_DIR>
+  INSTALL_COMMAND   make install PREFIX=<INSTALL_DIR>
+)
+ExternalProject_Add_StepDependencies(lua542openssl build lua542)
+
+ExternalProject_Add(luajithmac
+  URL https://github.com/jkeys089/lua-resty-hmac/archive/193232acecb8bc15ee414651a53b11a1624e6a16.tar.gz
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     ""
+  INSTALL_DIR       ${luajitInstallDir}
+  INSTALL_COMMAND   ${CMAKE_COMMAND} -E make_directory <INSTALL_DIR>/lib/resty
+  COMMAND           ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/lib/resty/hmac.lua <INSTALL_DIR>/lib/resty/
+  COMMAND           echo return {} > <INSTALL_DIR>/lib/resty/string.lua
+)
+ExternalProject_Add_StepDependencies(luajithmac build luajit)
